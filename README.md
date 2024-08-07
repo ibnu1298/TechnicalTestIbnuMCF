@@ -1,6 +1,8 @@
 Code ini Menggunakan Code first
 jika di Visual Studio tinggal di berikan Perintah pada Package Console Manager
+
 >update-database
+
 maka Tabel akan di Generate langsung dan membuat DB MCFDB
 
 BackEnd 100%
