@@ -1,0 +1,55 @@
+﻿@model FrontEnd.Models.BPKB
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<h4>StudentCourse</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateData">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AgreementNumber" class="control-label"></label>
+                <input asp-for="AgreementNumber" class="form-control" value=@Model.AgreementNumber />
+                <span asp-validation-for="AgreementNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BpkbNo" class="control-label"></label>
+                <input asp-for="BpkbNo" class="form-control" value=@Model.BpkbNo/>
+                <span asp-validation-for="BpkbNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PoliceNo" class="control-label"></label>
+                <input asp-for="PoliceNo" class="form-control" value=@Model.PoliceNo />
+                <span asp-validation-for="PoliceNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FakturNo" class="control-label"></label>
+                <input asp-for="FakturNo" class="form-control" value=@Model.FakturNo />
+                <span asp-validation-for="FakturNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FakturDate" class="control-label"></label>
+                <input asp-for="FakturDate" class="form-control" value=@Model.FakturNo />
+                <span asp-validation-for="FakturDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

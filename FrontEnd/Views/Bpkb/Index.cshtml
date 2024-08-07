@@ -1,0 +1,68 @@
+﻿@using System.Globalization
+@model IEnumerable<FrontEnd.Models.BPKB>
+@{
+	ViewData["Title"] = "Wellcome";
+}
+@if (User.Identity.IsAuthenticated)
+{
+	<div style="margin-top:200px; color:black;" class="text-center">
+		<h1>Selamat Datang @User.Identity.Name</h1>
+		<div>Anda bisa mengakses halaman sesuai dengan Role yang anda miliki</div>
+	</div>
+	<h1 class="my-3">List Data</h1>
+	<div class="card my-3">
+		<div class="card-body">
+			<div class="col-md-8">
+				<div>
+					<!--Ini Untuk Informasi dari action lain-->
+					@if (ViewData["pesan"] != null)
+					{
+						@Html.Raw(ViewData["pesan"])
+					}
+				</div>
+				<p class="my-3">
+					<a asp-action="Create">Create New</a>
+				</p>				
+				<table class="table table-striped my-3">
+					<thead>
+						<tr>
+							<th>Number Agreement</th>
+							<th>No. BPKB</th>
+							<th>No. Polisi</th>
+							<th>No. Faktur</th>
+							<th>Tanggal Faktur</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in Model)
+						{
+							<tr class="py-auto">
+								<td>
+									@Html.DisplayFor(modelItem => item.AgreementNumber)
+								</td>
+								<td style="color:black">
+									@Html.DisplayFor(modelItem => item.BpkbNo)
+								</td>
+								<td style="color:black">
+									@Html.DisplayFor(modelItem => item.PoliceNo)
+								</td>
+								<td style="color:black">
+									@Html.DisplayFor(modelItem => item.FakturNo)
+								</td>
+								<td style="color:black">
+									@Html.DisplayFor(modelItem =>  item.FakturDate)
+								</td>
+								<td>
+									<a class="btn btn-sm btn-warning" asp-action="UpdateData"
+									   asp-route-id="@item.AgreementNumber">Update</a>
+									
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+}
