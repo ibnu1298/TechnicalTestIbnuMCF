@@ -98,15 +98,15 @@ namespace BackEnd.Services
                 }
                 else
                 {
-                    updateBPKB.BpkbNo = obj.BpkbNo;
-                    updateBPKB.BranchId = obj.BranchId;
-                    updateBPKB.BpkbDateIn = obj.BpkbDateIn;
-                    updateBPKB.BpkbDate = obj.BpkbDate;
-                    updateBPKB.FakturNo = obj.FakturNo;
-                    updateBPKB.FakturDate = obj.FakturDate;
-                    updateBPKB.PoliceNo = obj.PoliceNo;
-                    updateBPKB.LocationId = obj.LocationId;
-                    updateBPKB.LastUpdatedBy = obj.CreatedBy;
+                    if (!string.IsNullOrEmpty(obj.BpkbNo)) updateBPKB.BpkbNo = obj.BpkbNo;
+                    if (!string.IsNullOrEmpty(obj.BranchId)) updateBPKB.BranchId = obj.BranchId;
+                    if (obj.BpkbDateIn != null && obj.BpkbDateIn > DateTime.MinValue) updateBPKB.BpkbDateIn = obj.BpkbDateIn;
+                    if (obj.BpkbDate != null && obj.BpkbDate > DateTime.MinValue) updateBPKB.BpkbDate = obj.BpkbDate;
+                    if (!string.IsNullOrEmpty(obj.FakturNo)) updateBPKB.FakturNo = obj.FakturNo;
+                    if (obj.FakturDate != null && obj.FakturDate > DateTime.MinValue) updateBPKB.FakturDate = obj.FakturDate;
+                    if (!string.IsNullOrEmpty(obj.PoliceNo)) updateBPKB.PoliceNo = obj.PoliceNo;
+                    if (!string.IsNullOrEmpty(obj.LocationId)) updateBPKB.LocationId = obj.LocationId;
+                    if (!string.IsNullOrEmpty(obj.LastUpdatedBy)) updateBPKB.LastUpdatedBy = obj.CreatedBy;
                     updateBPKB.LastUpdatedOn = DateTime.Now;
 
                     await _context.SaveChangesAsync();
