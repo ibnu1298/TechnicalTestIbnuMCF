@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BackEnd.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LocationsController : ControllerBase

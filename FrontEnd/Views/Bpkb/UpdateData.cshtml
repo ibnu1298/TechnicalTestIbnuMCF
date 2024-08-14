@@ -1,4 +1,4 @@
-﻿@model FrontEnd.Models.BPKB
+﻿@model FrontEnd.Models.updateBPKB
 
 @{
     ViewData["Title"] = "Update";
@@ -9,37 +9,52 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="UpdateData">
+        <form asp-action="UpdateData" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AgreementNumber" class="control-label"></label>
-                <input asp-for="AgreementNumber" class="form-control" value=@Model.AgreementNumber />
-                <span asp-validation-for="AgreementNumber" class="text-danger"></span>
+                <label asp-for="objBPKB.AgreementNumber" class="control-label"></label>
+                <input asp-for="objBPKB.AgreementNumber" class="form-control" readonly value=@Model.objBPKB.AgreementNumber />
+                <span asp-validation-for="objBPKB.AgreementNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BpkbNo" class="control-label"></label>
-                <input asp-for="BpkbNo" class="form-control" value=@Model.BpkbNo/>
-                <span asp-validation-for="BpkbNo" class="text-danger"></span>
+                <label asp-for="objBPKB.BranchId" class="control-label"></label>
+                <input asp-for="objBPKB.BranchId" class="form-control" value=@Model.objBPKB.BranchId />
+                <span asp-validation-for="objBPKB.BranchId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PoliceNo" class="control-label"></label>
-                <input asp-for="PoliceNo" class="form-control" value=@Model.PoliceNo />
-                <span asp-validation-for="PoliceNo" class="text-danger"></span>
+                <label asp-for="objBPKB.BpkbNo" class="control-label"></label>
+                <input asp-for="objBPKB.BpkbNo" class="form-control" value=@Model.objBPKB.BpkbNo />
+                <span asp-validation-for="objBPKB.BpkbNo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FakturNo" class="control-label"></label>
-                <input asp-for="FakturNo" class="form-control" value=@Model.FakturNo />
-                <span asp-validation-for="FakturNo" class="text-danger"></span>
+                <label asp-for="objBPKB.BpkbDateIn" class="control-label"></label>
+                <input asp-for="objBPKB.BpkbDateIn" class="form-control" type="date" />
+                <span asp-validation-for="objBPKB.BpkbDateIn" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LocationId" class="control-label"></label>
-                <input asp-for="LocationId" class="form-control" value=@Model.LocationId />
-                <span asp-validation-for="LocationId" class="text-danger"></span>
+                <label asp-for="objBPKB.BpkbDate" class="control-label"></label>
+                <input asp-for="objBPKB.BpkbDate" class="form-control" type="date" />
+                <span asp-validation-for="objBPKB.BpkbDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FakturDate" class="control-label"></label>
-                <input asp-for="FakturDate" class="form-control" value=@Model.FakturNo />
-                <span asp-validation-for="FakturDate" class="text-danger"></span>
+                <label asp-for="objBPKB.FakturNo" class="control-label"></label>
+                <input asp-for="objBPKB.FakturNo" class="form-control" value=@Model.objBPKB.FakturNo />
+                <span asp-validation-for="objBPKB.FakturNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="objBPKB.FakturDate" class="control-label"></label>
+                <input asp-for="objBPKB.FakturDate" class="form-control" type="date" />
+                <span asp-validation-for="objBPKB.FakturDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="objBPKB.PoliceNo" class="control-label"></label>
+                <input asp-for="objBPKB.PoliceNo" class="form-control" value=@Model.objBPKB.PoliceNo />
+                <span asp-validation-for="objBPKB.PoliceNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Location">Select Location</label>
+                @Html.DropDownListFor(model => model.objBPKB.LocationId, Model.Locations, "Select Location", new { @class = "form-control" })
+                <span asp-validation-for="Locations" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

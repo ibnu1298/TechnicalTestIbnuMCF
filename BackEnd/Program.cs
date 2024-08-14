@@ -15,9 +15,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(
-builder.Configuration.GetConnectionString("MCFConnectionDev")).EnableSensitiveDataLogging());
+string constringEnv = Environment.GetEnvironmentVariable("MCFConnection")!;
+if (!string.IsNullOrEmpty(constringEnv))
+{
+    builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(constringEnv));
+}
+else
+{
+    throw new Exception($"Enviroment {constringEnv} NotFound");
+}
 
 //Add Setting JWT
 var appSettingsSection = builder.Configuration.GetSection("AppSettings");

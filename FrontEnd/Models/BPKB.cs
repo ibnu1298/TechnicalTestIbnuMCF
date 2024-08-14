@@ -1,4 +1,6 @@
-﻿namespace FrontEnd.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace FrontEnd.Models
 {
 	public class BPKB
 	{
@@ -23,5 +25,14 @@
     public class objGetBPKB : BaseResponse
     {
         public BPKB objBPKB { get; set; }
+    }
+	public class updateBPKB
+	{
+        public BPKB objBPKB { get; set; }       
+        public IEnumerable<SelectListItem> Locations { get; set; }        
+    }
+	public class listLocation
+	{
+        public IEnumerable<Location> Locations { get; set; }
     }
 }

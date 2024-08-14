@@ -100,10 +100,10 @@ namespace BackEnd.Services
                 {
                     if (!string.IsNullOrEmpty(obj.BpkbNo)) updateBPKB.BpkbNo = obj.BpkbNo;
                     if (!string.IsNullOrEmpty(obj.BranchId)) updateBPKB.BranchId = obj.BranchId;
-                    if (obj.BpkbDateIn != null && obj.BpkbDateIn > DateTime.MinValue) updateBPKB.BpkbDateIn = obj.BpkbDateIn;
-                    if (obj.BpkbDate != null && obj.BpkbDate > DateTime.MinValue) updateBPKB.BpkbDate = obj.BpkbDate;
+                    updateBPKB.BpkbDateIn = obj.BpkbDateIn.HasValue? obj.BpkbDateIn: DateTime.Now;
+                    if (obj.BpkbDate.HasValue) updateBPKB.BpkbDate = obj.BpkbDate.HasValue? obj.BpkbDateIn:DateTime.Now;
                     if (!string.IsNullOrEmpty(obj.FakturNo)) updateBPKB.FakturNo = obj.FakturNo;
-                    if (obj.FakturDate != null && obj.FakturDate > DateTime.MinValue) updateBPKB.FakturDate = obj.FakturDate;
+                    updateBPKB.FakturDate = obj.FakturDate.HasValue ? obj.FakturDate : DateTime.Now;
                     if (!string.IsNullOrEmpty(obj.PoliceNo)) updateBPKB.PoliceNo = obj.PoliceNo;
                     if (!string.IsNullOrEmpty(obj.LocationId)) updateBPKB.LocationId = obj.LocationId;
                     if (!string.IsNullOrEmpty(obj.LastUpdatedBy)) updateBPKB.LastUpdatedBy = obj.CreatedBy;
